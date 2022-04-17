@@ -11,6 +11,14 @@ public class Stage {
         mText = _text;
     }
 
+    public String getQuest() {
+        return mQuest;
+    }
+
+    public void setQuest(String _quest) {
+        mQuest = _quest;
+    }
+
     public int size() {
         return mMoves.size();
     }
@@ -24,5 +32,6 @@ public class Stage {
     }
 
     private String mText;
+    private String mQuest;
     ArrayList<Move> mMoves = new ArrayList<>();
 }

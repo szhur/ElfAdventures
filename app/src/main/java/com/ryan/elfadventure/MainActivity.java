@@ -1,5 +1,6 @@
 package com.ryan.elfadventure;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,10 +18,21 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        int layoutId =
-            getResources().getIdentifier("activity_main", "layout", getPackageName());
-        setContentView(layoutId);
+        OnSwipeTouchListener ostListener = new OnSwipeTouchListener(MainActivity.this){
+            public void onSwipeRight() {
+                goToQuest();
+            }
+            public void onSwipeLeft() {
+                goToQuest();
+            }
+        };
+
+        this.findViewById(android.R.id.content).setOnTouchListener(ostListener);
+
+        TextView stageTxt = findViewById(R.id.stageTxt);
+        stageTxt.setOnTouchListener(ostListener);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
@@ -31,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             parser.next();
             mMapManager = new MapManager(parser);
 
-            setLevel(0);
+            setLevel(Globals.getInstance().getLevel(), true);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (XmlPullParserException e) {
@@ -39,8 +51,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void setLevel(int _index) throws IOException, XmlPullParserException {
+    private void goToQuest() {
+        Intent intent = new Intent(this, QuestActivity.class);
+        startActivity(intent);
+    }
+
+    private void setLevel(int _index, boolean _useGlobals)
+            throws IOException, XmlPullParserException {
         Level level = mMapManager.getLevel(_index);
+        Globals.getInstance().setLevel(_index);
 
         int levelId =
             getResources().getIdentifier(
@@ -52,16 +71,25 @@ public class MainActivity extends AppCompatActivity {
         parser.next();
         mLevelManager = new LevelManager(parser);
 
-        setStage(level.isVisited() ? 0 : 1);
+        setStage(_useGlobals ?
+                Globals.getInstance().getStage() :
+                level.isVisited() ? 0 : 1
+        );
         level.visit();
     }
 
     private void setStage(int _index) {
         final Stage stage = mLevelManager.getStage(_index);
+
         TextView stageTxt = findViewById(R.id.stageTxt);
         String txt = stage.getText();
-        if (txt != null)
+        if (txt != null) {
+            Globals.getInstance().setStage(_index);
             stageTxt.setText(txt);
+        }
+        String quest = stage.getQuest();
+        if (quest != null)
+            Globals.getInstance().setQuestLog(quest);
 
         if (stage.size() == 1) {
             setStage(stage.getMove(0).getId());
@@ -99,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         if (move.isInner())
             setStage(move.getId());
         else
-            setLevel(move.getId());
+            setLevel(move.getId(), false);
     }
 
     private LevelManager mLevelManager;

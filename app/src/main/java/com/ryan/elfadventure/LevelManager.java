@@ -44,6 +44,8 @@ public class LevelManager {
             } else if (name.equals("move")) {
                 stage.addMove(readMove(_parser));
                 _parser.nextTag();
+            } else if (name.equals("quest")) {
+                stage.setQuest(readText(_parser));
             } else {
                 skip(_parser);
             }
