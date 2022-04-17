@@ -1,6 +1,14 @@
 package com.ryan.elfadventure;
 
 public class Move {
+    public boolean isInner() {
+        return mIsInner;
+    }
+
+    public void ifInner(boolean _isInner) {
+        mIsInner = _isInner;
+    }
+
     public int getId() {
         return mId;
     }
@@ -17,6 +25,7 @@ public class Move {
         mText = _text;
     }
 
-    int mId;
-    String mText;
+    private boolean mIsInner;
+    private int mId;
+    private String mText;
 }

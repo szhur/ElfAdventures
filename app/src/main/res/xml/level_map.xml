@@ -1,0 +1,7 @@
+<map>
+    <level id='0'>hero_house</level>
+    <level id='1'>main_square</level>
+    <level id='2'>gate</level>
+    <level id='3'>main_road</level>
+    <level id='4'>forest_road</level>
+</map>

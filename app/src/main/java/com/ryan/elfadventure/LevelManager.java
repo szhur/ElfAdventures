@@ -30,10 +30,6 @@ public class LevelManager {
         return mStages.get(_index);
     }
 
-    public void addStage(Stage _stage) {
-        mStages.add(_stage);
-    }
-
     private void readStage(XmlPullParser _parser) throws IOException, XmlPullParserException {
         Stage stage = new Stage();
         _parser.require(XmlPullParser.START_TAG, null, "stage");
@@ -66,13 +62,18 @@ public class LevelManager {
 
     private Move readMove(XmlPullParser _parser) throws IOException, XmlPullParserException {
         Move move = new Move();
+
+        move.ifInner(_parser.getAttributeName(0).equals("toId"));
         move.setId(
-                Integer.parseInt(
-                    _parser.getAttributeValue(null, "toId")
+                Integer.parseInt(move.isInner() ?
+                    _parser.getAttributeValue(null, "toId") :
+                    _parser.getAttributeValue(null, "toLoc")
                 )
         );
         if (_parser.next() == XmlPullParser.TEXT) {
             move.setText(_parser.getText());
+        } else {
+            _parser.nextTag();
         }
         return move;
     }
