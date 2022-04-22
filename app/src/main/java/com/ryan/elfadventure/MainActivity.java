@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
@@ -96,18 +97,13 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        // TODO: Replace with programmatically defined buttons
-        ArrayList<Button> buttons = new ArrayList<>();
-        buttons.add(findViewById(R.id.moveBtn1));
-        buttons.add(findViewById(R.id.moveBtn2));
-        buttons.add(findViewById(R.id.moveBtn3));
-
+        LinearLayout btnLayout = findViewById(R.id.btnLayout);
         for (int i = 0; i < stage.size(); ++i)
         {
-            Button button = buttons.get(i);
-            button.setText(stage.getMove(i).getText());
+            Button newBtn = new Button(this);
+            newBtn.setText(stage.getMove(i).getText());
             int finalI = i;
-            button.setOnClickListener(new View.OnClickListener() {
+            newBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     try {
@@ -119,6 +115,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
+
+            btnLayout.addView(newBtn);
         }
     }
 
