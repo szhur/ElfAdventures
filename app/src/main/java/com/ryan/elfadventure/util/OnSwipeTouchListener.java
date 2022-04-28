@@ -1,4 +1,4 @@
-package com.ryan.elfadventure;
+package com.ryan.elfadventure.util;
 
 import android.content.Context;
 import android.view.GestureDetector;

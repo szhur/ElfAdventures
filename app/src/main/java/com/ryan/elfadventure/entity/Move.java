@@ -1,4 +1,4 @@
-package com.ryan.elfadventure;
+package com.ryan.elfadventure.entity;
 
 public class Move {
     public boolean isInner() {

@@ -1,4 +1,7 @@
-package com.ryan.elfadventure;
+package com.ryan.elfadventure.manager;
+
+import com.ryan.elfadventure.entity.Move;
+import com.ryan.elfadventure.entity.Stage;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;

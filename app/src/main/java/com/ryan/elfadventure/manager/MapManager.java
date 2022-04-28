@@ -1,4 +1,6 @@
-package com.ryan.elfadventure;
+package com.ryan.elfadventure.manager;
+
+import com.ryan.elfadventure.entity.Level;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -33,4 +35,5 @@ public class MapManager {
     }
 
     private ArrayList<Level> mLevels = new ArrayList<>();
+
 }

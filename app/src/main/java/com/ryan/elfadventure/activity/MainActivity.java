@@ -1,4 +1,4 @@
-package com.ryan.elfadventure;
+package com.ryan.elfadventure.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,20 +10,31 @@ import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.ryan.elfadventure.entity.Level;
+import com.ryan.elfadventure.entity.Move;
+import com.ryan.elfadventure.manager.XmlManager;
+import com.ryan.elfadventure.util.OnSwipeTouchListener;
+import com.ryan.elfadventure.R;
+import com.ryan.elfadventure.entity.Stage;
+import com.ryan.elfadventure.global.Globals;
+import com.ryan.elfadventure.global.LevelState;
+import com.ryan.elfadventure.manager.LevelManager;
+import com.ryan.elfadventure.manager.MapManager;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        XmlManager.init(getResources());
 
         OnSwipeTouchListener ostListener = new OnSwipeTouchListener(MainActivity.this){
             public void onSwipeRight() {
-                goToQuest();
+                goToInventory();
             }
             public void onSwipeLeft() {
                 goToQuest();
@@ -39,12 +50,8 @@ public class MainActivity extends AppCompatActivity {
         actionBar.hide();
 
         try {
-            XmlPullParser parser = getResources().getXml(R.xml.level_map);
-            parser.next();
-            parser.next();
-            mMapManager = new MapManager(parser);
-
-            setLevel(Globals.getInstance().getLevel(), true);
+            LevelState levelState = Globals.getInstance().getLevelState();
+            setLevel(levelState.getLevel(), true);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (XmlPullParserException e) {
@@ -57,35 +64,34 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void goToInventory() {
+        Intent intent = new Intent(this, InventoryActivity.class);
+        startActivity(intent);
+    }
+
     private void setLevel(int _index, boolean _useGlobals)
             throws IOException, XmlPullParserException {
-        Level level = mMapManager.getLevel(_index);
-        Globals.getInstance().setLevel(_index);
+        LevelState levelState = Globals.getInstance().getLevelState();
+        Level level = XmlManager.getInstance().getMapManager().getLevel(_index);
+        levelState.setLevel(_index);
 
-        int levelId =
-            getResources().getIdentifier(
-                    level.getPath(), "xml", getPackageName()
-            )
-        ;
-        XmlPullParser parser = getResources().getXml(levelId);
-        parser.next();
-        parser.next();
-        mLevelManager = new LevelManager(parser);
+        XmlManager.getInstance().initLevelManager(getResources());
 
         setStage(_useGlobals ?
-                Globals.getInstance().getStage() :
+                levelState.getStage() :
                 level.isVisited() ? 0 : 1
         );
         level.visit();
     }
 
     private void setStage(int _index) {
-        final Stage stage = mLevelManager.getStage(_index);
+        LevelState levelState = Globals.getInstance().getLevelState();
+        final Stage stage = XmlManager.getInstance().getLevelManager().getStage(_index);
 
         TextView stageTxt = findViewById(R.id.stageTxt);
         String txt = stage.getText();
         if (txt != null) {
-            Globals.getInstance().setStage(_index);
+            levelState.setStage(_index);
             stageTxt.setText(txt);
         }
         String quest = stage.getQuest();
@@ -127,7 +133,4 @@ public class MainActivity extends AppCompatActivity {
         else
             setLevel(move.getId(), false);
     }
-
-    private LevelManager mLevelManager;
-    private MapManager mMapManager;
 }

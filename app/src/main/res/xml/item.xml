@@ -1,0 +1,7 @@
+<items>
+	<item id='IT1'>
+		<name>Стрелы</name>
+		<stack>true</stack>
+		<image>arrow.jpg</image>
+	</item>
+</items>

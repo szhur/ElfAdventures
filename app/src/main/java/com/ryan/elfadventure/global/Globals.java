@@ -1,4 +1,4 @@
-package com.ryan.elfadventure;
+package com.ryan.elfadventure.global;
 
 public class Globals {
     private static Globals globalsInstance = new Globals();
@@ -18,24 +18,16 @@ public class Globals {
         mQuestLog = _questLog;
     }
 
-    public int getStage() {
-        return mStage;
+    public LevelState getLevelState() {
+        return mLevelState;
     }
 
-    public void setStage(int _stage) {
-        mStage = _stage;
-    }
-
-    public int getLevel() {
-        return mLevel;
-    }
-
-    public void setLevel(int _level) {
-        mLevel = _level;
+    public InventoryState getInvState() {
+        return mInvState;
     }
 
     private String mQuestLog;
 
-    private int mStage = 1;
-    private int mLevel;
+    private LevelState mLevelState = new LevelState();
+    private InventoryState mInvState = new InventoryState();
 }

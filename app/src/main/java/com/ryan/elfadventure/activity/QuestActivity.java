@@ -1,4 +1,4 @@
-package com.ryan.elfadventure;
+package com.ryan.elfadventure.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -7,6 +7,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.ryan.elfadventure.util.OnSwipeTouchListener;
+import com.ryan.elfadventure.R;
+import com.ryan.elfadventure.global.Globals;
 
 public class QuestActivity extends AppCompatActivity {
     @SuppressLint("ClickableViewAccessibility")
@@ -22,7 +26,7 @@ public class QuestActivity extends AppCompatActivity {
                 goToMain();
             }
             public void onSwipeLeft() {
-                goToMain();
+                goToInventory();
             }
         };
 
@@ -36,6 +40,11 @@ public class QuestActivity extends AppCompatActivity {
 
     private void goToMain() {
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    private void goToInventory() {
+        Intent intent = new Intent(this, InventoryActivity.class);
         startActivity(intent);
     }
 }
