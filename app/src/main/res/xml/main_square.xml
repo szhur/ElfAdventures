@@ -1,15 +1,15 @@
 <level>
     <stage id='0'>
         <text>Всё ещё красивая площадь</text>
-        <move toId='2'>NULL</move>
+        <action toId='2'>NULL</action>
     </stage>
     <stage id='1'>
         <text>Вы выходите на красивую площадь</text>
-        <move toId='2'>NULL</move>
+        <action toId='2'>NULL</action>
     </stage>
     <stage id='2'>
-        <move toLoc='0'>Домой</move>
-        <move toLoc='2'>К вратам</move>
-        <move toId='0'>Почесать репу</move>
+        <action toLoc='0'>Домой</action>
+        <action toLoc='2'>К вратам</action>
+        <action toId='0'>Почесать репу</action>
     </stage>
 </level>

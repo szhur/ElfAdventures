@@ -28,11 +28,11 @@ public class Cell {
     }
 
     public void invalidate() {
-        setCount(0);
+        setItemId(0);
     }
 
     public boolean isValid() {
-        return getCount() == 0;
+        return getItemId() != 0;
     }
 
     private int mItemId;

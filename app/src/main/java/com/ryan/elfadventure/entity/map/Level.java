@@ -1,4 +1,4 @@
-package com.ryan.elfadventure.entity;
+package com.ryan.elfadventure.entity.map;
 
 public class Level {
     public Level(String _path) {

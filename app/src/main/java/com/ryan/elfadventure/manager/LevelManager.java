@@ -1,7 +1,8 @@
 package com.ryan.elfadventure.manager;
 
-import com.ryan.elfadventure.entity.Move;
-import com.ryan.elfadventure.entity.Stage;
+import com.ryan.elfadventure.entity.map.Action;
+import com.ryan.elfadventure.entity.map.Stage;
+import com.ryan.elfadventure.util.XmlUtil;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -20,13 +21,9 @@ public class LevelManager {
             if (name.equals("stage")) {
                 readStage(_parser);
             } else {
-                skip(_parser);
+                XmlUtil.skip(_parser);
             }
         }
-    }
-
-    public int size() {
-        return mStages.size();
     }
 
     public Stage getStage(int _index) {
@@ -42,64 +39,60 @@ public class LevelManager {
             }
 
             String name = _parser.getName();
-            if (name.equals("text")) {
-                stage.setText(readText(_parser));
-            } else if (name.equals("move")) {
-                stage.addMove(readMove(_parser));
-                _parser.nextTag();
-            } else if (name.equals("quest")) {
-                stage.setQuest(readText(_parser));
-            } else {
-                skip(_parser);
+            switch (name) {
+                case "text":
+                    stage.setText(XmlUtil.readText(_parser));
+                    break;
+                case "action":
+                    stage.addAction(readAction(_parser));
+                    break;
+                case "quest":
+                    stage.setQuest(XmlUtil.readText(_parser));
+                    break;
+                default:
+                    XmlUtil.skip(_parser);
+                    break;
             }
         }
         mStages.add(stage);
     }
 
-    private String readText(XmlPullParser _parser) throws IOException, XmlPullParserException {
-        String result = null;
-        if (_parser.next() == XmlPullParser.TEXT) {
-            result = _parser.getText();
-            _parser.nextTag();
-        }
-        return result;
-    }
+    private Action readAction(XmlPullParser _parser) throws IOException, XmlPullParserException {
+        Action action = new Action();
+        _parser.require(XmlPullParser.START_TAG, null, "action");
 
-    private Move readMove(XmlPullParser _parser) throws IOException, XmlPullParserException {
-        Move move = new Move();
+        while (_parser.next() != XmlPullParser.END_TAG) {
+            if (_parser.getEventType() != XmlPullParser.START_TAG) {
+                continue;
+            }
 
-        move.ifInner(_parser.getAttributeName(0).equals("toId"));
-        move.setId(
-                Integer.parseInt(move.isInner() ?
-                    _parser.getAttributeValue(null, "toId") :
-                    _parser.getAttributeValue(null, "toLoc")
-                )
-        );
-        if (_parser.next() == XmlPullParser.TEXT) {
-            move.setText(_parser.getText());
-        } else {
-            _parser.nextTag();
-        }
-        return move;
-    }
-
-    private void skip(XmlPullParser parser) throws XmlPullParserException, IOException {
-        if (parser.getEventType() != XmlPullParser.START_TAG) {
-            throw new IllegalStateException();
-        }
-        int depth = 1;
-        while (depth != 0) {
-            switch (parser.next()) {
-                case XmlPullParser.END_TAG:
-                    depth--;
+            String name = _parser.getName();
+            switch (name) {
+                case "moveTo":
+                case "moveToLoc":
+                    action.ifInner(name.equals("moveTo"));
+                    action.setId(Integer.parseInt(
+                            XmlUtil.readText(_parser)
+                    ));
                     break;
-                case XmlPullParser.START_TAG:
-                    depth++;
+                case "text":
+                    action.setText(XmlUtil.readText(_parser));
+                    break;
+                case "item":
+                    action.setItemId(Integer.parseInt(
+                            _parser.getAttributeValue(null, "id")
+                            )
+                    );
+                    XmlUtil.skip(_parser);
+                    break;
+                default:
+                    XmlUtil.skip(_parser);
                     break;
             }
         }
-    }
 
+        return action;
+    }
 
     private ArrayList<Stage> mStages = new ArrayList<>();
 }

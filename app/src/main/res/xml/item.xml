@@ -1,7 +1,23 @@
 <items>
-	<item id='IT1'>
+	<item id='1'>
+		<name>Лук</name>
+		<image>bow</image>
+		<damage>5</damage>
+	</item>
+	<item id='2'>
 		<name>Стрелы</name>
 		<stack>true</stack>
 		<image>arrow.jpg</image>
+	</item>
+	<item id='3'>
+		<name>Охотничий кинжал</name>
+		<image>dagger.jpg</image>
+		<damage>10</damage>
+	</item>
+	<item id='4'>
+		<name>Метательные ножи</name>
+		<stack>true</stack>
+		<image>throw_knife.jpg</image>
+		<damage>2</damage>
 	</item>
 </items>

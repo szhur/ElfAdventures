@@ -1,7 +1,9 @@
 <level>
 	<stage id='0'>
 		<text>Привычно скрипнувшая половица и трель колокольчиков над дверью</text>
-		<move toId='7'>NULL</move>
+		<action>
+			<moveTo>7</moveTo>
+		</action>
 	</stage>
 	<stage id='1'>
 		<text>
@@ -16,9 +18,18 @@
 			
 			Эх… вот, и что делать? Променять друга на красотку? С другой стороны, не настолько же Чад безнадежен, чтобы не суметь выстрелить из лука. Или, настолько?
 		</text>
-		<move toId='2'>Пойду к Тимелии. Когда еще представится такой шанс?!</move>
-		<move toId='3'>Девушек много, а друг один.</move>
-		<move toId='4'>Никуда не пойду. Останусь дома и хорошенько высплюсь перед смотром.</move>
+		<action>
+			<text>Пойду к Тимелии. Когда еще представится такой шанс?!</text>
+			<moveTo>2</moveTo>
+		</action>
+		<action>
+			<text>Девушек много, а друг один.</text>
+			<moveTo>3</moveTo>
+		</action>
+		<action toId='4'>
+			<text>Никуда не пойду. Останусь дома и хорошенько высплюсь перед смотром.</text>
+			<moveTo>4</moveTo>
+		</action>
 	</stage>
 	<stage id='2'>
 		<text>
@@ -28,7 +39,9 @@
 		<quest id='1' close='false'>
 			Навестить Тимелию на поляне в лесу
 		</quest>
-		<move toId='7'>NULL</move>
+		<action>
+			<moveTo>7</moveTo>
+		</action>
 	</stage>
 	<stage id='3'>
 		<text>
@@ -38,7 +51,9 @@
 		<quest id='2'>
 			Отправится к Чаду на поляну на отшибе
 		</quest>
-		<move toId='7'>NULL</move>
+		<action>
+			<moveTo>7</moveTo>
+		</action>
 	</stage>
 	<stage id='4'>
 		<text>
@@ -47,7 +62,9 @@
 		<quest id='3'>
 			Принять участие в смотре на главной площади
 		</quest>
-		<move toId='7'>NULL</move>
+		<action>
+			<moveTo>7</moveTo>
+		</action>
 	</stage>
 	<stage id='5'>
 		<text>
@@ -55,46 +72,41 @@
 		</text>
 		<action id='1'>
 			<text>Взять лук</text>
-			<weapon id='1' action='ADD'/>
+			<item id='1'>1</item>
 		</action>
 		<action id='2'>
 			<text>Взять стрелы</text>
-			<item id='1'>100</item>
+			<item id='2'>100</item>
 		</action>
 		<action id='3'>
 			<text>Взять охотничий кинжал</text>
-			<item id='2' action='ADD'/>
+			<item id='3'>1</item>
 		</action>
 		<action id='4'>
 			<text>Взять метательные ножи</text>
-			<item id='3' action='ADD'/>
-		</action>
-		<action id='5'>
-			<text>Взять мешочек с монетами</text>
-			<money>41230</money>
-		</action>
-		<action id='6'>
-			<text>Взять тетиву</text>
-			<item id='2'/>
-		</action>
-		<action id='7'>
-			<text>Взять охотничий костюм</text>
-			<armor id='1' action='ADD'/>
-		</action>
-		<action id='8'>
-			<text>Взять фамильный амулет</text>
-			<armor id='2' action='ADD'/>
+			<item id='4'>1</item>
 		</action>
 	</stage>
 	<stage id='6'>
 		<text>
 			Хороший отдых перед тяжелым днем не помешает.
 		</text>
-		<move toId='7'>NULL</move>
+		<action>
+			<moveTo>7</moveTo>
+		</action>
 	</stage>
 	<stage id='7'>
-		<move toId='5'>Осмотреться</move>
-		<move toId='6'>Лечь спать</move>
-		<move toLoc='1'>Отправиться на главную площадь</move>
+		<action>
+			<text>Осмотреться</text>
+			<moveTo>5</moveTo>
+		</action>
+		<action>
+			<text>Лечь спать</text>
+			<moveTo>6</moveTo>
+		</action>
+		<action>
+			<text>Отправиться на главную площадь</text>
+			<moveToLoc>1</moveToLoc>
+		</action>
 	</stage>
 </level>

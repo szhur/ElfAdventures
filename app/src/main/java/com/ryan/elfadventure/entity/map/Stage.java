@@ -1,4 +1,4 @@
-package com.ryan.elfadventure.entity;
+package com.ryan.elfadventure.entity.map;
 
 import java.util.ArrayList;
 
@@ -20,18 +20,18 @@ public class Stage {
     }
 
     public int size() {
-        return mMoves.size();
+        return mActions.size();
     }
 
-    public void addMove(Move _move) {
-        mMoves.add(_move);
+    public void addAction(Action _action) {
+        mActions.add(_action);
     }
 
-    public Move getMove(int _index) {
-        return mMoves.get(_index);
+    public Action getAction(int _index) {
+        return mActions.get(_index);
     }
 
     private String mText;
     private String mQuest;
-    ArrayList<Move> mMoves = new ArrayList<>();
+    ArrayList<Action> mActions = new ArrayList<>();
 }

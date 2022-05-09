@@ -10,18 +10,16 @@ import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.ryan.elfadventure.entity.Level;
-import com.ryan.elfadventure.entity.Move;
+import com.ryan.elfadventure.entity.map.Level;
+import com.ryan.elfadventure.entity.map.Action;
+import com.ryan.elfadventure.global.Cell;
 import com.ryan.elfadventure.manager.XmlManager;
 import com.ryan.elfadventure.util.OnSwipeTouchListener;
 import com.ryan.elfadventure.R;
-import com.ryan.elfadventure.entity.Stage;
+import com.ryan.elfadventure.entity.map.Stage;
 import com.ryan.elfadventure.global.Globals;
 import com.ryan.elfadventure.global.LevelState;
-import com.ryan.elfadventure.manager.LevelManager;
-import com.ryan.elfadventure.manager.MapManager;
 
-import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
@@ -99,21 +97,29 @@ public class MainActivity extends AppCompatActivity {
             Globals.getInstance().setQuestLog(quest);
 
         if (stage.size() == 1) {
-            setStage(stage.getMove(0).getId());
+            setStage(stage.getAction(0).getId());
             return;
         }
 
         LinearLayout btnLayout = findViewById(R.id.btnLayout);
+        btnLayout.removeAllViews();
         for (int i = 0; i < stage.size(); ++i)
         {
             Button newBtn = new Button(this);
-            newBtn.setText(stage.getMove(i).getText());
+            final Action action = stage.getAction(i);
+
+            newBtn.setText(action.getText());
             int finalI = i;
             newBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     try {
                         move(stage, finalI);
+                        if (action.getItemId() != 0) {
+                            Globals.getInstance().getInvState().add(
+                                    new Cell(action.getItemId(), 1)
+                            );
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     } catch (XmlPullParserException e) {
@@ -127,10 +133,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void move(Stage _stage, int _index) throws IOException, XmlPullParserException {
-        Move move = _stage.getMove(_index);
-        if (move.isInner())
-            setStage(move.getId());
+        Action action = _stage.getAction(_index);
+        if (action.isInner())
+            setStage(action.getId());
         else
-            setLevel(move.getId(), false);
+            setLevel(action.getId(), false);
     }
 }

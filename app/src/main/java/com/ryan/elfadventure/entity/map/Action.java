@@ -1,6 +1,7 @@
-package com.ryan.elfadventure.entity;
+package com.ryan.elfadventure.entity.map;
 
-public class Move {
+/* TODO: Refactor to use optionals */
+public class Action {
     public boolean isInner() {
         return mIsInner;
     }
@@ -17,6 +18,14 @@ public class Move {
         mId = _id;
     }
 
+    public int getItemId() {
+        return mItemId;
+    }
+
+    public void setItemId(int _itemId) {
+        mItemId = _itemId;
+    }
+
     public String getText() {
         return mText;
     }
@@ -27,5 +36,8 @@ public class Move {
 
     private boolean mIsInner;
     private int mId;
+
+    private int mItemId;
+
     private String mText;
 }

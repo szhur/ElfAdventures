@@ -2,10 +2,8 @@ package com.ryan.elfadventure.manager;
 
 import android.content.res.Resources;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.ryan.elfadventure.R;
-import com.ryan.elfadventure.entity.Level;
+import com.ryan.elfadventure.entity.map.Level;
 import com.ryan.elfadventure.global.Globals;
 import com.ryan.elfadventure.global.LevelState;
 
@@ -71,8 +69,11 @@ public class XmlManager {
         mMapManager = new MapManager(parser);
     }
 
-    private void initInventoryManager(Resources _res) {
-
+    private void initInventoryManager(Resources _res) throws IOException, XmlPullParserException {
+        XmlPullParser parser = _res.getXml(R.xml.item);
+        parser.next();
+        parser.next();
+        mInventoryManager = new InvertoryManager(parser);
     }
 
     MapManager mMapManager;
