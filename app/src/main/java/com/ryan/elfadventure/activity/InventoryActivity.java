@@ -77,7 +77,7 @@ public class InventoryActivity extends AppCompatActivity {
         if (_id == R.layout.char_inventory)
             initTable(inventory.findViewById(R.id.invTable), 2, 6);
         else
-            initTable(inventory.findViewById(R.id.invTable), 6, 6);
+            initTable(inventory.findViewById(R.id.invTable), 8, 6);
 
         invLayout.removeAllViews();
         invLayout.addView(inventory);
