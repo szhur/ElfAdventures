@@ -3,21 +3,22 @@
 		<name>Лук</name>
 		<image>bow</image>
 		<damage>5</damage>
+		<desc>Хороший лук!</desc>
 	</item>
 	<item id='2'>
 		<name>Стрелы</name>
 		<stack>true</stack>
-		<image>arrow.jpg</image>
+		<image>arrow</image>
 	</item>
 	<item id='3'>
 		<name>Охотничий кинжал</name>
-		<image>dagger.jpg</image>
+		<image>dagger</image>
 		<damage>10</damage>
 	</item>
 	<item id='4'>
 		<name>Метательные ножи</name>
 		<stack>true</stack>
-		<image>throw_knife.jpg</image>
+		<image>throw_knife</image>
 		<damage>2</damage>
 	</item>
 </items>

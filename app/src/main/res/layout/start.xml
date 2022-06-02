@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fontFamily="serif-monospace"
+            android:text="Название"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="64dp"
+            tools:layout_editor_absoluteX="132dp"
+            tools:layout_editor_absoluteY="149dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_margin="20dp"
+            android:layout_weight="2"
+            android:orientation="vertical">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/newBtn"
+                android:layout_width="242dp"
+                android:layout_height="0dp"
+                android:layout_margin="20dp"
+                android:text="NEW"
+                android:textSize="32dp"
+                android:textColor="@color/black"
+                android:background="@drawable/custom_button"
+                android:layout_weight="1"
+                tools:layout_editor_absoluteX="84dp"
+                tools:layout_editor_absoluteY="237dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/loadingBtn"
+                android:layout_width="242dp"
+                android:layout_height="0dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/custom_button"
+                android:text="LOADING"
+                android:textSize="32dp"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                tools:layout_editor_absoluteX="84dp"
+                tools:layout_editor_absoluteY="321dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/settingBtn"
+                android:layout_width="242dp"
+                android:layout_height="0dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/custom_button"
+                android:layout_weight="1"
+                android:text="SETTINGS"
+                android:textSize="32dp"
+                android:textColor="@color/black"
+                tools:layout_editor_absoluteX="84dp"
+                tools:layout_editor_absoluteY="410dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/authorsBtn"
+                android:layout_width="242dp"
+                android:layout_height="0dp"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_button"
+                android:text="AUTHORS"
+                android:textSize="32dp"
+                android:textColor="@color/black"
+                tools:layout_editor_absoluteX="84dp"
+                tools:layout_editor_absoluteY="498dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/exitBtn"
+                android:layout_width="242dp"
+                android:layout_height="0dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/custom_button"
+                android:layout_weight="1"
+                android:text="EXIT"
+                android:textSize="32dp"
+                android:textColor="@color/black"
+                tools:layout_editor_absoluteX="84dp"
+                tools:layout_editor_absoluteY="580dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

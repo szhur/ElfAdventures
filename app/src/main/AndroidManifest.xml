@@ -10,13 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ElfAdventure">
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.StartActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="true">
         </activity>
         <activity
             android:name=".activity.QuestActivity"

@@ -60,11 +60,8 @@ public class InventoryActivity extends AppCompatActivity {
                             this.getPackageName()
                     );
                     imgView.setImageResource(drawableResourceId);
-                } else
-                    imgView.setImageResource(R.drawable.inv_cell);
+                }
             }
-            else
-                imgView.setImageResource(R.drawable.inv_cell);
 
             tableRow.addView(imgView);
             if (++count == MAX_COLS) {

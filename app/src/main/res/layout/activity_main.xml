@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".activity.MainActivity">
 
     <LinearLayout
@@ -14,6 +15,7 @@
         <TextView
             android:id="@+id/stageTxt"
             android:layout_width="match_parent"
+            android:textColor="@color/white"
             android:layout_height="0dp"
             android:layout_weight="3"
             android:inputType="textMultiLine"
