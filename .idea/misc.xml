@@ -6,6 +6,8 @@
         <entry key="..\:/ElfAdventure/app/src/main/res/drawable/border.xml" value="0.346875" />
         <entry key="..\:/ElfAdventure/app/src/main/res/drawable/custom_button.xml" value="0.346875" />
         <entry key="..\:/ElfAdventure/app/src/main/res/layout/activity_main.xml" value="0.46170212765957447" />
+        <entry key="..\:/ElfAdventure/app/src/main/res/layout/char_inventory.xml" value="0.3375" />
+        <entry key="..\:/ElfAdventure/app/src/main/res/layout/full_inventory.xml" value="0.3307291666666667" />
         <entry key="..\:/ElfAdventure/app/src/main/res/layout/inventory.xml" value="0.3307291666666667" />
         <entry key="..\:/ElfAdventure/app/src/main/res/layout/invertory.xml" value="0.3307291666666667" />
         <entry key="..\:/ElfAdventure/app/src/main/res/layout/questbook.xml" value="0.3307291666666667" />

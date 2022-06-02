@@ -8,23 +8,55 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7"
+        android:layout_weight="1"
         android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/backpackBtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:foreground="@drawable/border">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:foreground="@drawable/backpack"
+                android:scaleX="0.5"
+                android:scaleY="0.8"></ImageView>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/charBtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:foreground="@drawable/border">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:foreground="@drawable/character"
+                android:scaleX="0.5"
+                android:scaleY="0.8"></ImageView>
+        </FrameLayout>
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/invLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:layout_weight="8"
+        android:orientation="vertical" />
 
-
-    </LinearLayout>
-
-    <TableLayout
-        android:id="@+id/invTable"
-        android:layout_width="match_parent"
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="250dp"
         android:layout_height="0dp"
-        android:layout_weight="2" />
+        android:layout_margin="20dp"
+        android:textSize="32dp"
+        android:text="BACK"
+        android:background="@drawable/custom_button"
+        android:layout_gravity="center"
+        android:layout_weight="1"/>
 </LinearLayout>
