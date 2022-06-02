@@ -13,6 +13,7 @@ import android.widget.TableRow;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.core.content.ContextCompat;
 
 import com.ryan.elfadventure.R;
 import com.ryan.elfadventure.global.Cell;
@@ -58,6 +59,10 @@ public class InventoryActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+        getWindow().setStatusBarColor(
+                ContextCompat.getColor(this, R.color.black)
+        );
     }
 
     private void setLayout(int _id) {

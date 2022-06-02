@@ -7,6 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.ryan.elfadventure.R;
 
@@ -17,6 +18,10 @@ public class StartActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+        getWindow().setStatusBarColor(
+                ContextCompat.getColor(this, R.color.black)
+        );
 
         Button newBtn = findViewById(R.id.newBtn);
         newBtn.setOnClickListener(view -> goToMain());

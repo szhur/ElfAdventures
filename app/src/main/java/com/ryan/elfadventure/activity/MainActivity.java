@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.ryan.elfadventure.entity.map.Level;
 import com.ryan.elfadventure.entity.map.Action;
@@ -46,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+        getWindow().setStatusBarColor(
+                ContextCompat.getColor(this, R.color.black)
+        );
 
         try {
             LevelState levelState = Globals.getInstance().getLevelState();

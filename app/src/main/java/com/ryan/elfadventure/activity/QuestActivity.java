@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.ryan.elfadventure.util.OnSwipeTouchListener;
 import com.ryan.elfadventure.R;
@@ -36,6 +37,10 @@ public class QuestActivity extends AppCompatActivity {
 
         this.findViewById(android.R.id.content).setOnTouchListener(ostListener);
         questTxt.setOnTouchListener(ostListener);
+
+        getWindow().setStatusBarColor(
+                ContextCompat.getColor(this, R.color.black)
+        );
     }
 
     private void goToMain() {
